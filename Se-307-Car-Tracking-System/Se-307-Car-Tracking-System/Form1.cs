@@ -23,27 +23,28 @@ namespace Se_307_Car_Tracking_System
         public SqlDataAdapter adaptor = new SqlDataAdapter();
         public DataSet dataset = new DataSet();
 
-        public void combo()
+        public void combo() //comboboxa bosyer tablosundaki bos alanlari alfabetik olarak siraliyor.
         {
             baglanti.Open();
             komut.Connection = baglanti;
             komut.CommandText = "Select * from bosyer WHERE durum=@dur1";
-            komut.Parameters.AddWithValue("@dur1", "bos");
+            komut.Parameters.AddWithValue("@dur1", "bos"); //@dur1 in bos oldugunu bildiriyor
             SqlDataReader oku;
             oku = komut.ExecuteReader();
             while (oku.Read())
             {
-                
+                //oku.read olducakca comboboxi dolduruyor.
                 comboBox1.Items.Add(oku["bosalan"].ToString());
                 komut.Parameters.Clear();//comboboxta en son secilen kaliyor
+                //Hep ayni sorgunun yapilmamasi icin eklendi.
 
             }
-            baglanti.Close();
+            baglanti.Close(); 
             oku.Dispose();
             comboBox1.Sorted = true;
         }
 
-        public void plakayaz()
+        public void AlanDurumu() //Databaseye bakarak yer bos ise lime rengi dolu ise red rengine boyuyor.
         {
             baglanti.Open();
             komut.Connection = baglanti;
@@ -322,7 +323,7 @@ namespace Se_307_Car_Tracking_System
             oku.Dispose();
         }
 
-        public void plakayaz2()
+        public void PlakaYaz() //Alanin ismini databaseye bakarak orda arac var ise plakasi ile degistiriyor.
         {
 
 
@@ -445,29 +446,29 @@ namespace Se_307_Car_Tracking_System
 
         private void button7_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Application.Exit(); //Programdan cikisi sagliyor.
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text != "" && comboBox1.Text != "")
+            if (textBox1.Text != "" && comboBox1.Text != "") //textboxin ve comboboxin bos olup olmadigini kontrol ediyor.
             {
                 baglanti.Open();
                 komut.Connection = baglanti;
                 komut.CommandText = "INSERT INTO doluyer(dolu,plaka) VALUES('" + comboBox1.Text + "','" + textBox1.Text + "') ";
-                komut.ExecuteNonQuery();
+                komut.ExecuteNonQuery(); //Combo box ve textboxtan gelen verileri doluyer tablosuna kaydediyor.
                 
-                komut.CommandText = "UPDATE bosyer SET durum=@dol WHERE bosalan=@bos";
+                komut.CommandText = "UPDATE bosyer SET durum=@dol WHERE bosalan=@bos"; //bosyer tablosundaki durumu dol olarak degistiyor.
                 komut.Parameters.AddWithValue("@bos", comboBox1.Text);
                 komut.Parameters.AddWithValue("@dol", "dol");
                 komut.ExecuteNonQuery();
                 komut.Dispose();
                 baglanti.Close();
-                textBox1.Clear();
-                comboBox1.Items.Clear();
+                textBox1.Clear(); //textbox i temizliyoruz.
+                comboBox1.Items.Clear(); //comboboxin itemlerini siliyor combo fonksiyonunda tekrar yazdircaz
                 combo();
-                plakayaz();
-                plakayaz2();
+                AlanDurumu();
+                PlakaYaz(); //Alan durumunu ve plakalari guncelliyoruz
 
                 MessageBox.Show("Kayit Basari ile Eklendi");
 
@@ -481,8 +482,8 @@ namespace Se_307_Car_Tracking_System
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            plakayaz();
-            plakayaz2();
+            AlanDurumu();
+            PlakaYaz();
             combo();
         }
 
