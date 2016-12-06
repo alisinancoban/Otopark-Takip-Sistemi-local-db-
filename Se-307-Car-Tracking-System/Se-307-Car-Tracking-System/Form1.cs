@@ -18,6 +18,9 @@ namespace Se_307_Car_Tracking_System
         {
             InitializeComponent();
         }
+
+        string plakaYeri = null;
+
         public SqlConnection baglanti = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=otopark;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         public SqlCommand komut = new SqlCommand();
         public SqlDataAdapter adaptor = new SqlDataAdapter();
@@ -443,6 +446,117 @@ namespace Se_307_Car_Tracking_System
             oku.Dispose();
         }
 
+        public void plakaSil()
+        {
+
+
+            switch (plakaYeri)
+            {
+                case "A1":
+                    {
+                        button24.Text = plakaYeri;
+                        break;
+                    }
+                case "A2":
+                    {
+                        button23.Text = plakaYeri;
+                        break;
+                    }
+                case "A3":
+                    {
+                        button22.Text = plakaYeri;
+                        break;
+                    }
+                case "A4":
+                    {
+                        button21.Text = plakaYeri;
+                        break;
+                    }
+                case "A5":
+                    {
+                        button5.Text = plakaYeri;
+                        break;
+                    }
+                case "B1":
+                    {
+                        button6.Text = plakaYeri;
+                        break;
+                    }
+                case "B2":
+                    {
+                        button4.Text = plakaYeri;
+                        break;
+                    }
+                case "B3":
+                    {
+                        button8.Text = plakaYeri;
+                        break;
+                    }
+                case "B4":
+                    {
+                        button9.Text = plakaYeri;
+                        break;
+                    }
+                case "B5":
+                    {
+                        button10.Text = plakaYeri;
+                        break;
+                    }
+                case "C1":
+                    {
+                        button11.Text = plakaYeri;
+                        break;
+                    }
+                case "C2":
+                    {
+                        button12.Text = plakaYeri;
+                        break;
+                    }
+                case "C3":
+                    {
+                        button13.Text = plakaYeri;
+                        break;
+                    }
+                case "C4":
+                    {
+                        button14.Text = plakaYeri;
+                        break;
+                    }
+                case "C5":
+                    {
+                        button15.Text = plakaYeri;
+                        break;
+                    }
+                case "D1":
+                    {
+                        button16.Text = plakaYeri;
+                        break;
+                    }
+                case "D2":
+                    {
+                        button17.Text = plakaYeri;
+                        break;
+                    }
+                case "D3":
+                    {
+                        button18.Text = plakaYeri;
+                        break;
+                    }
+                case "D4":
+                    {
+                        button19.Text = plakaYeri;
+                        break;
+                    }
+                case "D5":
+                    {
+                        button20.Text = plakaYeri;
+                        break;
+                    }
+            }
+        }
+
+
+
 
         private void button7_Click(object sender, EventArgs e)
         {
@@ -465,6 +579,7 @@ namespace Se_307_Car_Tracking_System
                 komut.Dispose();
                 baglanti.Close();
                 textBox1.Clear(); //textbox i temizliyoruz.
+                comboBox1.Text = "";
                 comboBox1.Items.Clear(); //comboboxin itemlerini siliyor combo fonksiyonunda tekrar yazdircaz
                 combo();
                 AlanDurumu();
@@ -490,6 +605,64 @@ namespace Se_307_Car_Tracking_System
         private void button2_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text != "")
+            {
+                DialogResult cevap;
+                cevap = MessageBox.Show("Arac Cikisi Yapilacak Emin misiniz?", "Uyari", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (cevap==DialogResult.Yes)
+                {
+                    
+                    
+                    baglanti.Open();
+                    komut.CommandText = "SELECT dolu from doluyer WHERE plaka=@plaka";
+                    komut.Parameters.AddWithValue("@plaka", textBox1.Text);
+                    SqlDataReader oku;
+                    oku = komut.ExecuteReader();
+                    
+                    while (oku.Read())
+                    {
+                        plakaYeri = oku["dolu"].ToString();
+                    }
+                    oku.Dispose();
+                    MessageBox.Show(plakaYeri);
+                    komut.Connection = baglanti;
+                    komut.CommandText = "DELETE from doluyer WHERE plaka=@plak";
+                    komut.Parameters.AddWithValue("@plak", textBox1.Text);
+                    komut.ExecuteNonQuery();
+
+                    komut.CommandText = "UPDATE bosyer SET durum=@bos WHERE bosalan=@yer";
+                    komut.Parameters.AddWithValue("@yer", plakaYeri);
+                    komut.Parameters.AddWithValue("@bos","bos");
+                    komut.ExecuteNonQuery();
+
+                    
+                    komut.Dispose();
+                    baglanti.Close();
+
+                    textBox1.Clear();
+                    AlanDurumu();
+                    PlakaYaz();
+                    plakaSil();
+                    comboBox1.Items.Clear(); //comboboxin itemlerini siliyor combo fonksiyonunda tekrar yazdircaz
+                    combo();
+                   
+
+                }
+                else
+                {
+                    MessageBox.Show("Bos Alanlari doldurunuz!!!");
+                }
+            }
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            Form2 frm2 = new Form2();
+            frm2.Show();
         }
     }
 }

@@ -7,3 +7,4 @@ C:\Users\alisinancobn\Documents\Visual Studio 2015\Projects\Se-307-Car-Tracking-
 C:\Users\alisinancobn\Documents\Visual Studio 2015\Projects\Se-307-Car-Tracking-System\Se-307-Car-Tracking-System\obj\Debug\Se-307-Car-Tracking-System.csproj.GenerateResource.Cache
 C:\Users\alisinancobn\Documents\Visual Studio 2015\Projects\Se-307-Car-Tracking-System\Se-307-Car-Tracking-System\obj\Debug\Se-307-Car-Tracking-System.exe
 C:\Users\alisinancobn\Documents\Visual Studio 2015\Projects\Se-307-Car-Tracking-System\Se-307-Car-Tracking-System\obj\Debug\Se-307-Car-Tracking-System.pdb
+C:\Users\alisinancobn\Documents\Visual Studio 2015\Projects\Se-307-Car-Tracking-System\Se-307-Car-Tracking-System\obj\Debug\Se_307_Car_Tracking_System.Form2.resources
