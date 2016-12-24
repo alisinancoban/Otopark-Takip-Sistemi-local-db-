@@ -1,0 +1,9 @@
+c:\users\alisinancobn\documents\visual studio 2015\Projects\Yeni-Car-Park-Tracking-System\Yeni-Car-Park-Tracking-System\bin\Debug\Yeni-Car-Park-Tracking-System.exe.config
+c:\users\alisinancobn\documents\visual studio 2015\Projects\Yeni-Car-Park-Tracking-System\Yeni-Car-Park-Tracking-System\bin\Debug\Yeni-Car-Park-Tracking-System.exe
+c:\users\alisinancobn\documents\visual studio 2015\Projects\Yeni-Car-Park-Tracking-System\Yeni-Car-Park-Tracking-System\bin\Debug\Yeni-Car-Park-Tracking-System.pdb
+c:\users\alisinancobn\documents\visual studio 2015\Projects\Yeni-Car-Park-Tracking-System\Yeni-Car-Park-Tracking-System\obj\Debug\Yeni-Car-Park-Tracking-System.csprojResolveAssemblyReference.cache
+c:\users\alisinancobn\documents\visual studio 2015\Projects\Yeni-Car-Park-Tracking-System\Yeni-Car-Park-Tracking-System\obj\Debug\Yeni_Car_Park_Tracking_System.Form1.resources
+c:\users\alisinancobn\documents\visual studio 2015\Projects\Yeni-Car-Park-Tracking-System\Yeni-Car-Park-Tracking-System\obj\Debug\Yeni_Car_Park_Tracking_System.Properties.Resources.resources
+c:\users\alisinancobn\documents\visual studio 2015\Projects\Yeni-Car-Park-Tracking-System\Yeni-Car-Park-Tracking-System\obj\Debug\Yeni-Car-Park-Tracking-System.csproj.GenerateResource.Cache
+c:\users\alisinancobn\documents\visual studio 2015\Projects\Yeni-Car-Park-Tracking-System\Yeni-Car-Park-Tracking-System\obj\Debug\Yeni-Car-Park-Tracking-System.exe
+c:\users\alisinancobn\documents\visual studio 2015\Projects\Yeni-Car-Park-Tracking-System\Yeni-Car-Park-Tracking-System\obj\Debug\Yeni-Car-Park-Tracking-System.pdb
